@@ -8,6 +8,8 @@ const inTask = document.getElementById("tarea");
 const list = document.getElementById("list")
 const buttonAdd = document.getElementById("btnAdd")
 
+const modal = document.getElementById("modal");
+
 buttonAdd.addEventListener("click", addTask)
 
 let misTareas = [
@@ -24,6 +26,8 @@ let misTareas = [
 ]
 
 function addTask() {
+
+    modal.classList.remove("hidden")
 
     // 1. Coger el valor del input
     const miTarea = inTask.value
@@ -62,6 +66,10 @@ function updateTask(id) {
     const tareaSeleccionada = misTareas.find(tarea => tarea.id == id) 
     tareaSeleccionada.isDone = !tareaSeleccionada.isDone
     pintarLista()
+}
+
+function onAccept() {
+    modal.classList.add("hidden")
 }
 
 pintarLista()
